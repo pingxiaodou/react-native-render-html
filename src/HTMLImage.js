@@ -100,6 +100,17 @@ export default class HTMLImage extends PureComponent {
     }
 
     validImage (source, style, props = {}) {
+        if (Array.isArray(style)) {
+            for(let i = 0;i < style.length; i++){
+                if(style[i].display != "none") {
+                    style[i].display = "flex"
+                }
+            }
+        } else {
+            if(style.display != "none"){
+                style.display = "flex"
+            }
+        }
         return (
             <Image
               source={source}
